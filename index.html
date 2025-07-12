@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小说动画互动展示系统</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="application-name" content="小说动画互动展示系统">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/logo.png">
+  <meta name="description"
+    content="小说动画互动展示系统是一个专注帮助家长激励孩子自主学习，自定义任务奖励金币，通过金币在线玩益智小游戏，防止孩子沉迷游戏同时通过益智小游戏互动，提升孩子的反应、思考能力的平台。">
+  <meta name="keywords" content="小说,动画,互动展示系统,学习激励,在线小游戏,动作游戏,休闲游戏,策略游戏,冒险游戏">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script>
+    if ('serviceWorker' in navigator && !/debug/.test(location.href) && !/:/.test(location.host)) {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function (reg) {
+        // registration worked
+        console.log('Registration succeeded. Scope is ' + reg.scope);
+      }).catch(function (error) {
+        // registration failed
+        console.log('Registration failed with ' + error);
+      });
+    }
+    document.body.oncontextmenu = e => {
+      if (!/:/.test(location.host)) {
+        return false;
+      }
+      // e.preventDefault();
+    };
+    /**
+    document.body.onselectstart = e => {
+        var isCode = e.path.find(p => /language/.test(p.className));
+        if (isCode) {
+            return e;
+        } else {
+            return false;
+            // e.preventDefault();
+        }
+    };
+    **/
+    // 禁止复制 
+    document.body.oncopy = e => {
+      var isCode = e.path?.find(p => /language/.test(p.className));
+      if (isCode && !/:/.test(location.host)) {
+        return e;
+      } else {
+        return false;
+        // e.preventDefault();
+      }
+    }
+    const ConsoleGuard = {
+      openCallback() {
+        try {
+          window.open('about:blank', '_self');
+        }
+        catch (e) {
+          const btn = document.createElement('button');
+          btn.addEventListener('click', () => {
+            window.open('about:blank', '_self');
+          });
+          btn.click();
+        }
+      },
+      // 该方法适用于Safari浏览器，由于尝试在Safari中debugger无效，所以需要单独写
+      observeSafari() {
+        const div = document.createElement('div');
+        // 定义DOM节点对象属性的修饰符，当节点id被读取时，跳转空白页
+        Object.defineProperty(div, 'id', {
+          get: () => {
+            this.openCallback();
+          },
+        });
+        // 在Safari等部分浏览器中，打印一个DOM节点时，如果控制台开启，浏览器会读取上面的属性，否则不会
+        console.log(div);
+      },
+      observe() {
+        const obj = Object.create(null);
+        // 记录当前时间
+        let t = Date.now();
+        // 修改对象属性的取值方法
+        Object.defineProperty(obj, 'a', {
+          get: () => {
+            // 当对象属性的取值方法被触发时，判断时间间隔是否大于100ms
+            if (Date.now() - t > 100) {
+              // 如果打开了控制台，将弹出debugger，时间间隔一定会大于100ms，此时跳转空白页
+              this.openCallback();
+            }
+          },
+        });
+
+        // 定时打印obj.a触发属性的get方法进行判断
+        setInterval(() => {
+          // 更新时间t，关键点
+          t = Date.now();
+          // debugger，如果控制台开启，则会弹出debugger，否则不会
+          (function debug() { }).constructor('debugger')(); // debugger
+          // 触发obj.a的get方法
+          console.log(obj.a);
+        }, 200);
+      },
+      init() {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        if (userAgent.includes('safari') && !userAgent.includes('chrome')) {
+          this.observeSafari();
+        }
+        else {
+          this.observe();
+        }
+      },
+    };
+    if (!/localhost/.test(location.host) && !/:/.test(location.host) && !/debugtest/.test(location.href)) {
+      ConsoleGuard.init();
+    }
+  </script>
+  <script>
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "qw727isebn");
+  </script>
+</body>
+
+</html>
