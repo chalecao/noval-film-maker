@@ -239,7 +239,7 @@ const LandingPage: React.FC = () => {
             className="flex items-center space-x-4"
           >
             <button
-              onClick={() => window.open('https://github.com/your-repo/novel-animation-system', '_blank')}
+              onClick={() => window.open('https://github.com/chalecao/noval-film-maker', '_blank')}
               className="flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
             >
               <Github className="h-4 w-4" />
@@ -330,13 +330,13 @@ const LandingPage: React.FC = () => {
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </button>
 
-            {/* <button
-              onClick={() => window.open('https://github.com/your-repo/novel-animation-system', '_blank')}
+            <button
+              onClick={() => window.open('https://github.com/chalecao/noval-film-maker', '_blank')}
               className="flex items-center space-x-3 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300"
             >
               <Github className="h-5 w-5" />
               <span className="text-lg">查看源码</span>
-            </button> */}
+            </button>
           </motion.div>
 
           <motion.div

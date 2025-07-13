@@ -129,8 +129,8 @@ ollama list
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-repo/novel-animation-system.git
-cd novel-animation-system
+git clone https://github.com/chalecao/noval-film-maker.git
+cd novel-film-maker
 
 # 或下载ZIP包并解压
 ```

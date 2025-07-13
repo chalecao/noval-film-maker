@@ -54,7 +54,7 @@ An AI-powered novel animation generation and display system that automatically c
 
 ### 1. Clone the Project
 ```bash
-git clone https://github.com/your-repo/novel-animation-system.git
+git clone https://github.com/chalecao/noval-film-maker.git
 cd novel-animation-system
 ```
 
@@ -173,7 +173,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for more 
 
 If you encounter any problems or have suggestions, please:  
 1. Check [FAQ](docs/FAQ.md)
-2. Submit [Issue](https://github.com/your-repo/novel-animation-system/issues)
+2. Submit [Issue](https://github.com/chalecao/noval-film-maker/issues)
 3. Contact development team
 
 ## Acknowledgements

@@ -52,8 +52,8 @@
 
 ### 1. 克隆项目
 ```bash
-git clone https://github.com/your-repo/novel-animation-system.git
-cd novel-animation-system
+git clone https://github.com/chalecao/noval-film-maker.git
+cd novel-film-maker
 ```
 
 ### 2. 安装前端依赖
@@ -170,7 +170,7 @@ novel-animation-system/
 
 如果您遇到问题或有建议，请：
 1. 查看 [FAQ](docs/FAQ.md)
-2. 提交 [Issue](https://github.com/your-repo/novel-animation-system/issues)
+2. 提交 [Issue](https://github.com/chalecao/noval-film-maker/issues)
 3. 联系开发团队
 
 ## 致谢
