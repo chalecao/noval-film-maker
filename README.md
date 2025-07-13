@@ -4,6 +4,10 @@ An AI-powered novel animation generation and display system that automatically c
 
 [中文文档](README-zh.md)
 
+online demo: https://w3pua.com/tool/noval/
+
+![preview](./public/preview.png)
+
 ## System Features
 
 ### 🎬 AI-Driven Creation Workflow
@@ -55,7 +59,7 @@ An AI-powered novel animation generation and display system that automatically c
 ### 1. Clone the Project
 ```bash
 git clone https://github.com/chalecao/noval-film-maker.git
-cd novel-animation-system
+cd novel-film-maker
 ```
 
 ### 2. install frontend dependencies

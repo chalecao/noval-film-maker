@@ -2,6 +2,10 @@
 
 一个基于AI的小说动画生成和展示系统，能够将文本小说自动转换为精美的动画场景。
 
+[english](README.md)
+
+在线demo：https://w3pua.com/tool/noval/
+
 ## 系统特点
 
 ### 🎬 AI驱动的创作流程
