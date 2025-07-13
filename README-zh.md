@@ -6,6 +6,8 @@
 
 在线demo：https://w3pua.com/tool/noval/
 
+![preview](./public/preview.png)
+
 ## 系统特点
 
 ### 🎬 AI驱动的创作流程

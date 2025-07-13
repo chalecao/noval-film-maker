@@ -6,7 +6,7 @@ An AI-powered novel animation generation and display system that automatically c
 
 online demo: https://w3pua.com/tool/noval/
 
-![preview](./public/preview.png)
+![preview](./public/preview-en.png)
 
 ## System Features
 
