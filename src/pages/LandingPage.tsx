@@ -46,29 +46,29 @@ const LandingPage: React.FC = () => {
   const agentSteps = [
     {
       icon: BookOpen,
-      title: "编导Agent",
-      description: "智能分析小说内容，按章节生成专业剧本",
+      title: labels.agent.script,
+      description: labels.agent.scriptDesc,
       color: "from-blue-500 to-cyan-500",
       status: 'splitting',
     },
     {
       icon: Brain,
-      title: "导演Agent",
-      description: "设计关键场景、动画效果和镜头语言",
+      title: labels.agent.director,
+      description: labels.agent.directorDesc,
       color: "from-purple-500 to-pink-500",
       status: 'designing',
     },
     {
       icon: Wand2,
-      title: "制作Agent",
-      description: "生成场景图片、语音素材和动画代码",
+      title: labels.agent.production,
+      description: labels.agent.productionDesc,
       color: "from-green-500 to-emerald-500",
       status: 'generating'
     },
     {
       icon: Scissors,
-      title: "剪辑Agent",
-      description: "检查连贯性，确保场景完整和质量",
+      title: labels.agent.editor,
+      description: labels.agent.editorDesc,
       color: "from-orange-500 to-red-500",
       status: 'editing'
     }
@@ -76,15 +76,15 @@ const LandingPage: React.FC = () => {
 
   // Agent节点配置
   const agentNodes = [
-    { id: 'upload', label: '文件上传', icon: Upload, color: '#6366f1', position: { x: 100, y: 50 } },
-    { id: 'script', label: '编导Agent', icon: BookOpen, color: '#3b82f6', position: { x: 300, y: 50 } },
-    { id: 'director', label: '导演Agent', icon: Brain, color: '#8b5cf6', position: { x: 300, y: 150 } },
-    { id: 'production', label: '制作Agent', icon: Wand2, color: '#10b981', position: { x: 300, y: 250 } },
-    { id: 'editor', label: '剪辑Agent', icon: Scissors, color: '#f59e0b', position: { x: 530, y: 150 } },
-    { id: 'complete', label: '完成', icon: CheckCircle, color: '#ef4444', position: { x: 530, y: 250 } },
-    { id: 'imageTool', label: '绘画Agent', icon: PaintBucket, color: '#10b981', position: { x: 100, y: 350 } },
-    { id: 'audioTool', label: '音频Agent', icon: BookAudio, color: '#10b981', position: { x: 270, y: 350 } },
-    { id: 'effectTool', label: '特效Agent', icon: Film, color: '#10b981', position: { x: 440, y: 350 } },
+    { id: 'upload', label: labels.agent.upload, icon: Upload, color: '#6366f1', position: { x: 100, y: 50 } },
+    { id: 'script', label: labels.agent.script, icon: BookOpen, color: '#3b82f6', position: { x: 300, y: 50 } },
+    { id: 'director', label: labels.agent.director, icon: Brain, color: '#8b5cf6', position: { x: 300, y: 150 } },
+    { id: 'production', label: labels.agent.production, icon: Wand2, color: '#10b981', position: { x: 300, y: 250 } },
+    { id: 'editor', label: labels.agent.editor, icon: Scissors, color: '#f59e0b', position: { x: 530, y: 150 } },
+    { id: 'complete', label: labels.agent.complete, icon: CheckCircle, color: '#ef4444', position: { x: 530, y: 250 } },
+    { id: 'imageTool', label: labels.agent.image, icon: PaintBucket, color: '#10b981', position: { x: 100, y: 350 } },
+    { id: 'audioTool', label: labels.agent.audio, icon: BookAudio, color: '#10b981', position: { x: 270, y: 350 } },
+    { id: 'effectTool', label: labels.agent.effect, icon: Film, color: '#10b981', position: { x: 440, y: 350 } },
 
   ];
 
@@ -247,10 +247,10 @@ const LandingPage: React.FC = () => {
             </button>
             <button
               onClick={() => navigate('/try')}
-              className="flex items-center space-x-2 px-6 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+              className="flex items-center space-x-2 px-4 py-2 whitespace-nowrap rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
             >
               <Play className="h-4 w-4" />
-              <span>立即体验</span>
+              <span>{labels.agent.try1}</span>
             </button>
           </motion.div>
         </div>
@@ -273,16 +273,16 @@ const LandingPage: React.FC = () => {
           >
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
               <Sparkles className="h-4 w-4 text-yellow-400" />
-              <span className="text-sm">AI驱动的创作革命</span>
+              <span className="text-sm">{labels.agent.ai}</span>
             </div>
 
             <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-                将文字
+                {labels.agent.slogonHead}
               </span>
               <br />
-              <span className="flex md:inline-flex gap-2">
-                {['变', '成', '电', '影'].map((char, index) => (
+              <span className="flex md:inline-flex gap-2 justify-center">
+                {labels.agent.slogonBody.map((char, index) => (
                   <motion.span
                     key={char}
                     initial={{ opacity: 0, y: 20 }}
@@ -302,7 +302,7 @@ const LandingPage: React.FC = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              基于先进AI技术的小说动画生成系统，让每一个故事都成为视觉盛宴
+              {labels.agent.slogonDesc}
             </p>
           </motion.div>
 
@@ -317,7 +317,7 @@ const LandingPage: React.FC = () => {
               className="group flex items-center space-x-3 px-8 py-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-500/25"
             >
               <Play className="h-5 w-5" />
-              <span className="text-lg font-semibold">开始创作</span>
+              <span className="text-lg font-semibold">{labels.agent.try}</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
 
@@ -326,7 +326,7 @@ const LandingPage: React.FC = () => {
               className="flex items-center space-x-3 px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300"
             >
               <BookOpen className="h-6 w-6" />
-              <span>查看书架</span>
+              <span>{labels.agent.bookshelf}</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </button>
 
@@ -347,15 +347,15 @@ const LandingPage: React.FC = () => {
           >
             <div className="flex items-center space-x-2">
               <Zap className="h-4 w-4 text-yellow-400" />
-              <span>AI驱动</span>
+              <span>{labels.agent.effect}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Star className="h-4 w-4 text-blue-400" />
-              <span>开源免费</span>
+              <span>{labels.agent.free}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Film className="h-4 w-4 text-green-400" />
-              <span>专业品质</span>
+              <span>{labels.agent.professional}</span>
             </div>
           </motion.div>
         </div>
@@ -385,10 +385,10 @@ const LandingPage: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              AI Agent 工作流
+              AI Agent {labels.agent.workflow}
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              四个专业AI Agent协同工作，将您的小说转化为精美的动画场景
+              {labels.agent.workflowDesc}
             </p>
           </motion.div>
 
@@ -466,7 +466,7 @@ const LandingPage: React.FC = () => {
                   ></div>
                 ))}
               </div>
-              <span className="text-purple-300">AI正在工作中...</span>
+              <span className="text-purple-300">{labels.agent.workflowStatus}</span>
             </div>
           </motion.div>
         </div>
@@ -482,7 +482,7 @@ const LandingPage: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              核心特性
+              {labels.agent.personalities}
             </h2>
           </motion.div>
 
@@ -490,20 +490,20 @@ const LandingPage: React.FC = () => {
             {[
               {
                 icon: Brain,
-                title: "智能分析",
-                description: "深度理解小说内容，提取关键情节和人物关系",
+                title: labels.agent.personalities1,
+                description: labels.agent.personalities1desc,
                 color: "from-blue-500 to-cyan-500"
               },
               {
                 icon: Wand2,
-                title: "自动生成",
-                description: "AI自动生成场景图片、语音和动画效果",
+                title: labels.agent.personalities2,
+                description: labels.agent.personalities2desc,
                 color: "from-purple-500 to-pink-500"
               },
               {
                 icon: Film,
-                title: "电影级品质",
-                description: "专业的视觉效果和流畅的动画体验",
+                title: labels.agent.personalities3,
+                description: labels.agent.personalities3desc,
                 color: "from-green-500 to-emerald-500"
               }
             ].map((feature, index) => {
@@ -537,10 +537,10 @@ const LandingPage: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              开始您的创作之旅
+              {labels.agent.startTry}
             </h2>
             <p className="text-xl text-gray-400 mb-8">
-              上传您的小说，让AI为您创造视觉奇迹
+              {labels.agent.startTryDesc}
             </p>
 
             <button
@@ -548,7 +548,7 @@ const LandingPage: React.FC = () => {
               className="group inline-flex items-center space-x-3 px-12 py-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-purple-500/25 text-lg font-semibold"
             >
               <Play className="h-6 w-6" />
-              <span>立即开始</span>
+              <span>{labels.agent.try}</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </button>
           </motion.div>
@@ -565,7 +565,7 @@ const LandingPage: React.FC = () => {
             </span>
           </div>
           <div className="text-gray-400 text-sm">
-            © 2025 - Present NovelAI Studio. 让每个故事都成为视觉盛宴.
+            © 2025 - Present NovelAI Studio. {labels.agent.slogon}
           </div>
         </div>
       </footer >

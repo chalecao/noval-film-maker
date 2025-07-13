@@ -1,0 +1,44 @@
+[
+  {
+    "id": "f0fdb770-902e-452c-879a-db82f5b6dfc7",
+    "title": "山边小村",
+    "scenes": [
+      {
+        "id": "f34db4f4-1315-47d8-990a-5408ff8b9f3c",
+        "chapterIndex": 0,
+        "sceneIndex": 0,
+        "title": "破旧的屋顶",
+        "description": "镜头缓缓推近，展现一间简陋的茅草屋内部。黑色的茅草屋顶，斑驳的墙壁，角落里堆放着一些杂物。房间中央，一张铺着旧棉被的床，二愣子和韩铸并排而卧。阳光透过缝隙照射进来，照亮了房间里的尘埃。",
+        "imageUrl": "./assets/images/image_SC001_20250712_181031.png",
+        "audioUrl": "./assets/audios/audio_SC001_20250712_180953.mp3",
+        "audioScript": "镜头缓缓推近，从远处鸟瞰，展现一间破旧的茅草屋内。屋顶由深黑色的干枯茅草构成，部分地方已经破损，露出灰色的木结构。墙壁斑驳，露出泥土和石块，颜色深浅不一。房间内光线昏暗，主要来自屋顶缝隙透进来的阳光，在空气中形成可见的尘埃颗粒。房间中央，一张铺着褪色、带有磨损痕迹的旧棉被的床，二愣子和韩铸并排而卧，睡姿放松。床铺周围堆放着一些杂物，例如旧木箱、破旧的工具和一些干草。地面是泥土，有些地方铺着简单的竹席。",
+        "animationCode": "@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } } .dust-particles { animation: fade-in 5s infinite; }",
+        "duration": 46.42
+      },
+      {
+        "id": "f7839b5b-a58d-4aec-848e-5bd7a015fc9b",
+        "chapterIndex": 0,
+        "sceneIndex": 1,
+        "title": "粗粮窝头",
+        "description": "特写镜头聚焦在二愣子的脸上，他的眼神中带着一丝不易察觉的忧虑。镜头切换到他手握着一个粗粮窝头的场景，窝头表面粗糙，散发着谷物的味道。画面中，他努力地闭上眼睛，试图入睡。",
+        "imageUrl": "./assets/images/image_SC002_20250712_181106.png",
+        "audioUrl": "./assets/audios/audio_SC002_20250712_181031.mp3",
+        "audioScript": "场景设定在简陋的茅草屋内，光线昏暗，主要来自一扇小窗户，窗外隐约可见山峦的轮廓。屋内地面铺着泥土，墙壁是粗糙的茅草编织而成。镜头聚焦在二愣子的脸上，他的面部轮廓被昏暗的光线勾勒出来，眼神中带着一丝不易察觉的忧虑。他手握着一个粗粮窝头，窝头表面粗糙，可以看到谷物的颗粒，散发着淡淡的麦香。他努力地闭上眼睛，眉头微皱，试图入睡。床边堆放着一些简单的杂物，暗示着生活的不富裕。整体画面采用俯视角度，营造出一种压抑和孤独的氛围。",
+        "animationCode": "@keyframes eyelid-flutter { 0% { opacity: 0.9; } 50% { opacity: 0.8; } 100% { opacity: 0.9; } }",
+        "duration": 45.61
+      },
+      {
+        "id": "a8c37c3a-1697-43f4-bb8c-3914c16dd6c9",
+        "chapterIndex": 0,
+        "sceneIndex": 2,
+        "title": "土墙的裂缝",
+        "description": "镜头拉近，聚焦于黄泥土墙上的细小裂缝。裂缝中隐约传来韩母埋怨的声音，以及韩父抽旱烟的声响。画面呈现出一种压抑和沉闷的氛围。",
+        "imageUrl": "./assets/images/image_SC003_20250712_181135.png",
+        "audioUrl": "./assets/audios/audio_SC003_20250712_181106.mp3",
+        "audioScript": "镜头缓缓拉近，从一扇破旧的茅草屋门开始，逐渐聚焦于屋内的土墙。土墙呈现出粗糙的质感，布满了细小而纵横交错的裂缝，裂缝中可见深褐色的泥土。光线从屋顶的缝隙中透进来，呈现出昏暗的光线，照亮了土墙的局部，阴影部分则更加深沉。画面构图采用三分法，将土墙置于画面中心，突出其细节。墙边堆放着一些简单的生活用品，如破旧的木盆、打磨过的石板等，暗示着贫困的生活。韩母的衣着朴素，略显陈旧，韩父则穿着一件褪色的粗布衣衫，面容饱经风霜。空气中弥漫着尘土和烟草的味道。",
+        "animationCode": "@keyframes wall-crack-shadow { 0% { transform: translate(-0.1px, -0.1px); } 50% { transform: translate(0.1px, 0.1px); } 100% { transform: translate(-0.1px, -0.1px); } } .wall-crack { animation: wall-crack-shadow 2s infinite; }",
+        "duration": 50.85
+      }
+    ]
+  }
+]

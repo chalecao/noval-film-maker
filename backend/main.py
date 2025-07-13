@@ -87,7 +87,7 @@ async def process_novel_async(file_path: Path):
         # chapters_data = {}
         chapters_data = await novel_flow.process_novel(str(file_path), update_status)
 
-        # chapters_data = [Chapter(id='99777c69-0ee0-4b7a-b39e-588c13e36a54', title='第一章：旧时光的余韵', scenes=[Scene(id='5732124f-7bde-4bca-9289-057a362f8037', chapterIndex=0, sceneIndex=0, title='归乡', description='林默驾驶着一辆老旧的汽车，驶入蜿蜒的山路。阳光透过树叶的缝隙，在车身上投下斑驳的光影。他脸上带着一丝怀念和一丝忐忑。', imageUrl='/assets/images/image_SCENE_001_20250712_010738.png', audioUrl='/assets/audios/audio_SCENE_001.wav', animationCode='@keyframes dust-float { from { opacity: 0; } to { opacity: 0.1; } } .dust-particle { animation: dust-float 5s infinite; }', duration=25), Scene(id='5aecd001-b159-42c1-8e6e-b689dd2a97d2', chapterIndex=0, sceneIndex=1, title='老屋', description='林默站在破旧的木屋前，屋檐下爬满了青苔。门吱呀一声打开，一股尘土味扑面而来。屋内堆满了旧物，阳光透过窗户，照亮了角落里的灰尘。', imageUrl='/assets/images/image_SCENE_002_20250712_010817.png', audioUrl='/assets/audios/audio_SCENE_002.wav', animationCode='@keyframes dust-particles { 0% { opacity: 0; } 100% { opacity: 0.5; } } .dust-particle { animation: dust-particles 5s infinite; }', duration=35), Scene(id='a43e543f-4d66-44d0-accc-b19f11eeab44', chapterIndex=0, sceneIndex=2, title='尘封的角落', description='林默在屋子的角落里，发现一个被遗忘的木箱。他小心翼翼地打开箱子，里面装满了旧玩具、照片和信件。他拿起一张泛黄的照片，照片上是一个年轻的女孩，笑容灿烂。', imageUrl='/assets/images/image_SCENE_003_20250712_010851.png', audioUrl='/assets/audios/audio_SCENE_003.wav', animationCode='@keyframes glow { from { opacity: 0.2; } to { opacity: 1; } } .photo { animation: glow 1s infinite; }', duration=45), Scene(id='e9926b88-4bce-48ee-b9cb-98ebfa7f160c', chapterIndex=0, sceneIndex=3, title='照片中的女孩', description='照片中的女孩，正是林默童年时代最好的朋友，小雅。她和林默一起在山里玩耍，一起分享秘密。照片上的场景，仿佛就在眼前重现。', imageUrl='/assets/images/image_SCENE_004_20250712_010924.png', audioUrl='/assets/audios/audio_SCENE_004.wav', animationCode='@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } } .photo { animation: fade-in 2s ease-in-out; } @keyframes glow { from { opacity: 0.2; } to { opacity: 0.5; } } .glow { animation: glow 5s infinite; }', duration=40), Scene(id='5a501ef9-afa5-4728-b6f3-21ec06f1f046', chapterIndex=0, sceneIndex=4, title='线索', description='林默在照片背面，发现了一行娟秀的字迹：“月亮湖畔，七月十七”。', imageUrl='/assets/images/image_SCENE_005_20250712_010957.png', audioUrl='/assets/audios/audio_SCENE_005.wav', animationCode='@keyframes reveal { from { opacity: 0; } to { opacity: 1; } } .hidden-text { animation: reveal 1s ease-in-out; }', duration=20), Scene(id='947f3001-6b1c-4739-83ce-bf50eee3e524', chapterIndex=0, sceneIndex=5, title='山路', description='林默沿着通往月亮湖的山路，一步一步地走去。夕阳西下，将山峦染成一片金红色。他心中充满了期待和不安。', imageUrl='/assets/images/image_SCENE_006_20250712_011030.png', audioUrl='/assets/audios/audio_SCENE_006.wav', animationCode='@keyframes glow { 0% { opacity: 0.2; } 50% { opacity: 0.8; } 100% { opacity: 0.2; } } .sunset-glow { animation: glow 5s infinite; }', duration=30)]), Chapter(id='487c8aee-1ecb-4ce8-ae00-54cb883326b8', title='山边小村', scenes=[Scene(id='a1dcbf1c-d4b9-4923-b242-1f50c4111a3f', chapterIndex=1, sceneIndex=0, title='破旧的床铺', description='房间昏暗，只有一扇小窗透进微弱的光线。二愣子躺在简陋的床铺上，旧棉被破旧不堪，散发着霉味。韩铸酣睡在他身边，鼾声此起彼伏。土墙上裂缝清晰可见，墙壁传来隐约的唠叨声。', imageUrl='/assets/images/image_SCENE_001_20250712_010738.png', audioUrl='/assets/audios/audio_SCENE_001.wav', animationCode='@keyframes dust-float { from { opacity: 0; } to { opacity: 0.1; } } .dust-particle { animation: dust-float 5s infinite; }', duration=45), Scene(id='11cdce5b-2cb2-4800-9c16-c7d9e8a5cbb7', chapterIndex=1, sceneIndex=1, title='名字的由来', description='特写镜头，一个用粗粮制成的窝头，旁边是老张叔的双手。老张叔的脸上带着一丝慈祥和回忆。', imageUrl='/assets/images/image_SCENE_002_20250712_010817.png', audioUrl='/assets/audios/audio_SCENE_002.wav', animationCode='@keyframes dust-particles { 0% { opacity: 0; } 100% { opacity: 0.5; } } .dust-particle { animation: dust-particles 5s infinite; }', duration=30), Scene(id='236d81ae-b19b-4a38-89d3-99b2041afa1c', chapterIndex=1, sceneIndex=2, title='早晨的准备', description='二愣子从床上起身，动作有些迟缓。他整理了一下衣服，眼神中带着一丝坚定。窗外，清晨的阳光逐渐洒进房间。', imageUrl='/assets/images/image_SCENE_003_20250712_010851.png', audioUrl='/assets/audios/audio_SCENE_003.wav', animationCode='@keyframes glow { from { opacity: 0.2; } to { opacity: 1; } } .photo { animation: glow 1s infinite; }', duration=30), Scene(id='1a07f740-b433-49ab-a3c7-458697911db5', chapterIndex=1, sceneIndex=3, title='村庄的景象', description='镜头拉远，展现整个山边小村的景象。房屋简陋，道路泥泞，人们忙碌的身影在田间劳作。空气中弥漫着泥土和青草的味道。', imageUrl='/assets/images/image_SCENE_004_20250712_010924.png', audioUrl='/assets/audios/audio_SCENE_004.wav', animationCode='@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } } .photo { animation: fade-in 2s ease-in-out; } @keyframes glow { from { opacity: 0.2; } to { opacity: 0.5; } } .glow { animation: glow 5s infinite; }', duration=45), Scene(id='ea3c8a2f-75e8-4c75-afec-57b4dcf33614', chapterIndex=1, sceneIndex=4, title='进山前的约定', description='二愣子和伙伴们在村口相遇，他们互相打着招呼，眼神中充满了默契和期待。他们准备一起进山，捡干柴。', imageUrl='/assets/images/image_SCENE_005_20250712_010957.png', audioUrl='/assets/audios/audio_SCENE_005.wav', animationCode='@keyframes reveal { from { opacity: 0; } to { opacity: 1; } } .hidden-text { animation: reveal 1s ease-in-out; }', duration=30)])]
+        # chapters_data = [Chapter(id='09f07061-e9da-4422-b7e8-486d2336abc7', title='山边小村', scenes=[Scene(id='d3ec8458-fcdf-49ca-b39d-a18063382abf', chapterIndex=0, sceneIndex=0, title='破屋残阳', description='黄昏时分，茅草屋顶在夕阳下泛着暗光，旧棉被上的霉斑如蛛网般蔓延，二愣子蜷缩在泥地上', imageUrl='/assets/images/image_SC001_20250712_174634.png', audioUrl='/assets/audios/audio_SC001_20250712_174607.mp3', animationCode='/* 棉絮飘动动画 */ @keyframes cottonSway { 0% {transform: translate(0,0) scale(1); opacity:1;} 100% {transform: translate(-10px,5px) scale(1.2); opacity:0.2;} } .cottonFibers { animation: cottonSway 15s linear infinite; } /* 霉斑蔓延动画 */ @keyframes moldSpread { 0% {opacity:0.3; transform: scale(1);} 100% {opacity:1; transform: scale(1.2);}} .moldSpots { animation: moldSpread 20s ease-in-out infinite; }', duration=3.25, audioScript='腐烂的棉絮在风中发出细碎声响'), Scene(id='82ddbb7a-4265-4410-8996-979f6b17838f', chapterIndex=0, sceneIndex=1, title='鼾声如雷', description='韩铸的鼾声在泥墙上震颤，打呼声与烟杆吸允声形成不规则节奏，墙缝渗出昏黄光线', imageUrl='/assets/images/image_SC002_20250712_174705.png', audioUrl='/assets/audios/audio_SC002_20250712_174634.mp3', animationCode=' @keyframes wall_light {\n 0% { opacity: 0.3; } \n 50% { opacity: 0.7; } \n 100% { opacity: 0.3; } \n }\n .wall-light { animation: wall_light 15s infinite; }', duration=2.64,audioScript='啪嗒啪嗒的烟杆声混着嘟嘟的鼾声',), Scene(id='f9c9d481-8fdd-4ab2-bee4-d50c1026f7a0', chapterIndex=0, sceneIndex=2, title='姓名密码', description='二愣子盯着褪色的棉被，指尖划过被面裂口，墙缝渗出的霉雾在脸上凝成细小水珠', imageUrl='/assets/images/image_SC003_20250712_174733.png', audioUrl='/assets/audios/audio_SC003_20250712_174705.mp3', animationCode='@keyframes moldFade { from {opacity:0.2} to {opacity:1}} @keyframes waterDrop { 0%{opacity:0} 50%{opacity:1} 100%{opacity:0}} .mold { animation: moldFade 5s linear forwards} .water { animation: waterDrop 1s ease-out forwards} .hand { animation: shake 0.3s ease-out forwards}', duration=2.09,audioScript="'窝头'两个字在舌尖发涩"), Scene(id='e5fb10b7-c15f-4966-ba2f-b3ccdd411821', chapterIndex=0, sceneIndex=3, title='晨光预兆', description='天光从裂缝透入，二愣子突然坐起，手指颤抖着扯开棉被，泥墙上爬满蛛网', imageUrl='/assets/images/image_SC004_20250712_174759.png', audioUrl='/assets/audios/audio_SC004_20250712_174733.mp3', animationCode='@keyframes lightFilter {0%{opacity:0.2;filter:blur(4px);}} 100%{opacity:1;filter:blur(0);} .crack-light {animation: lightFilter 5s ease-in-out infinite;}', duration=2.5,audioScript="'明天要捡柴'的念头刺破昏沉",)])]
         # 定时间隔3s更新status模拟测试状态，state顺序 splitting -> designing -> generating -> editing -> complete
         # await asyncio.sleep(3)
         # processing_status.stage = "splitting"
@@ -136,26 +136,44 @@ async def process_novel_async(file_path: Path):
         safe_filename = file_path.name.replace("/", "_").replace("\\", "_")  # 处理特殊字符
         with open(books_dir / f"{safe_filename}.json", "w", encoding="utf-8") as f:
             json.dump(chapters_dict, f, ensure_ascii=False, indent=2)
-    
-        
-        
 
         # 提取书名作者 追加生成all.json
-         # 提取作者
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        # 提取作者
         author = extract_author(content)
         print(f"提取到作者: {author if author else '未找到作者信息'}")
 
         # 提取作者
         book_title = extract_book_title(content)
         print(f"提取到书名: {book_title if book_title else '未找到书名信息'}")
-        with open(books_dir / "all.json", "a", encoding="utf-8") as f:
-            json.dump({
-                "path": f"/books/{safe_filename}.json",
-                "name": book_title,
-                "author": author,
-                "chapters": len(chapters_dict)
-            }, f, ensure_ascii=False, indent=2)
+        
+        # 追加生成 all.json（修复语法错误和缩进）
+        books_dir = Path("assets") / "books"
+        books_dir.mkdir(parents=True, exist_ok=True)  # 确保目录存在
+        
+        all_json_path = books_dir / "all.json"
+        new_book_info = {
+            "path": f"/books/{safe_filename}.json",
+            "name": book_title,
+            "author": author,
+            "chapters": len(chapters_dict),
+            "cover": chapters_dict[0]["scenes"][0]["imageUrl"]
+        }
 
+        # 读取或初始化 all.json
+        if all_json_path.exists():
+            with open(all_json_path, 'r', encoding='utf-8') as f:
+                existing_data = json.load(f)
+        else:
+            existing_data = []
+        
+        existing_data.append(new_book_info)
+
+        # 写入更新后的 all.json
+        with open(all_json_path, 'w', encoding='utf-8') as f:
+            json.dump(existing_data, f, ensure_ascii=False, indent=2)
+            
         # 清理临时文件
         os.remove(file_path)
 

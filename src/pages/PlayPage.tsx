@@ -68,7 +68,7 @@ const PlayPage: React.FC = () => {
         setLoading(true);
       }
 
-      const response = await fetch(`/assets/${getNovelIdFromUrl()}`, {
+      const response = await fetch(`./assets/${getNovelIdFromUrl()}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -164,6 +164,7 @@ const PlayPage: React.FC = () => {
     } else {
       // 播放完毕
       setIsPlaying(false);
+      audioRef.current.pause();
       setProgress(100);
     }
   };
@@ -410,7 +411,7 @@ const PlayPage: React.FC = () => {
             >
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => navigate('/try')}
+                  onClick={() => navigate('/')}
                   className="flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300"
                 >
                   <ArrowLeft className="h-4 w-4" />
@@ -569,7 +570,6 @@ const PlayPage: React.FC = () => {
           src={currentScene.audioUrl}
           muted={isMuted}
           autoPlay={isPlaying}
-          loop
           onError={() => {
             console.warn('音频加载失败:', currentScene.audioUrl);
           }}

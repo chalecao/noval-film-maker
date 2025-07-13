@@ -50,17 +50,16 @@ class NovelProcessingFlow:
         workflow.add_node("split_chapters", self.split_chapters_node)
         workflow.add_node("create_scripts", self.create_scripts_node)
         workflow.add_node("design_scenes", self.design_scenes_node)
-        workflow.add_node("edit_check", self.edit_check_node)  # 顺序调整
-        workflow.add_node("generate_assets", self.generate_assets_node)  # 后移
+        workflow.add_node("generate_assets", self.generate_assets_node)
+        workflow.add_node("edit_check", self.edit_check_node)
         workflow.add_node("finalize", self.finalize_node)
         
         # 设置边
         workflow.add_edge("split_chapters", "create_scripts")
         workflow.add_edge("create_scripts", "design_scenes")
-        workflow.add_edge("design_scenes", "edit_check")  # 替换原design_scenes->generate_assets
-        workflow.add_edge("edit_check", "generate_assets")  # 新增检查通过路径
-        workflow.add_edge("edit_check", "design_scenes")  # 新增检查不通过回退路径
-        workflow.add_edge("generate_assets", "finalize")  # 替换原generate_assets->edit_check
+        workflow.add_edge("design_scenes", "generate_assets")
+        workflow.add_edge("generate_assets", "edit_check")
+        workflow.add_edge("edit_check", "finalize")
         workflow.add_edge("finalize", END)
         
         # 设置入口点
@@ -116,7 +115,7 @@ class NovelProcessingFlow:
         try:
             scripts = []
             for i, chapter_content in enumerate(state["chapters"]):
-                print(f"create_scripts_node {i}: {chapter_content}")
+                print(f"create_scripts_node {i} {len(chapter_content)}: {chapter_content}")
                 script = await self.script_agent.create_script(chapter_content, i)
                 scripts.append(script)
                 
@@ -133,33 +132,21 @@ class NovelProcessingFlow:
             raise e
     
     async def design_scenes_node(self, state: NovelState) -> NovelState:
-        """设计场景节点（支持修正信息）"""
+        """设计场景节点"""
         if self.status_callback:
             self.status_callback("designing", 50, "正在设计场景...")
         
         try:
             scene_designs = []
-            # 如果有修正建议则使用修正模式
-            revision_mode = "revision_suggestions" in state
             for i, script in enumerate(state["scripts"]):
-                # 传递修正建议给导演代理
-                designs = await self.director_agent.design_scenes(
-                    script, 
-                    revision_suggestions=state.get("revision_suggestions", []) if revision_mode else []
-                )
+                designs = await self.director_agent.design_scenes(script)
                 scene_designs.extend(designs)
                 
-                # 更新进度（根据是否修正调整进度范围）
-                progress_base = 50 if not revision_mode else 55
-                progress = progress_base + (i + 1) / len(state["scripts"]) * 20
+                # 更新进度
+                progress = 50 + (i + 1) / len(state["scripts"]) * 20
                 if self.status_callback:
-                    status_msg = f"修正场景设计 {i+1}/{len(state['scripts'])}" if revision_mode else f"设计场景 {i+1}/{len(state['scripts'])}"
-                    self.status_callback("designing", int(progress), status_msg)
+                    self.status_callback("designing", int(progress), f"已完成 {i+1}/{len(state['scripts'])} 章节场景设计")
             
-            # 清除临时修正信息
-            if "revision_suggestions" in state:
-                del state["revision_suggestions"]
-                
             state["scene_designs"] = scene_designs
             state["current_step"] = "scenes_designed"
             return state
@@ -170,7 +157,7 @@ class NovelProcessingFlow:
     async def generate_assets_node(self, state: NovelState) -> NovelState:
         """生成素材节点"""
         if self.status_callback:
-            self.status_callback("generating", 80, "正在生成素材...")
+            self.status_callback("generating", 70, "正在生成素材...")
         
         try:
             generated_assets = []
@@ -178,8 +165,9 @@ class NovelProcessingFlow:
                 assets = await self.production_agent.generate_assets(scene_design)
                 generated_assets.append(assets)
                 
+                print(f"generate_assets_node {i}: {assets}")
                 # 更新进度
-                progress = 80 + (i + 1) / len(state["scene_designs"]) * 15
+                progress = 70 + (i + 1) / len(state["scene_designs"]) * 15
                 if self.status_callback:
                     self.status_callback("generating", int(progress), f"已完成 {i+1}/{len(state['scene_designs'])} 个场景素材")
             
@@ -191,30 +179,20 @@ class NovelProcessingFlow:
             raise e
     
     async def edit_check_node(self, state: NovelState) -> NovelState:
-        """编辑检查节点（增强回退支持）"""
+        """编辑检查节点"""
         if self.status_callback:
-            self.status_callback("editing", 70, "正在检查场景连贯性...")  # 调整进度起点匹配新流程位置
+            self.status_callback("editing", 85, "正在检查和编辑...")
         
         try:
-            # 获取带验证结果的检查信息（假设check_continuity返回(验证通过的素材, 是否通过)）
-            checked_assets, is_valid = await self.editor_agent.check_continuity(
+            # 检查连贯性和完整性
+            checked_assets = await self.editor_agent.check_continuity(
                 state["scripts"], 
                 state["scene_designs"], 
                 state["generated_assets"]
             )
             
             state["generated_assets"] = checked_assets
-            if is_valid:
-                state["current_step"] = "editing_passed"
-                if self.status_callback:
-                    self.status_callback("editing", 80, "连贯性检查通过，进入素材生成...")  # 进度衔接generate_assets
-            else:
-                state["current_step"] = "editing_failed"
-                # 保存需要修正的信息供design_scenes使用（假设check_continuity返回修正建议）
-                state["revision_suggestions"] = checked_assets.get("revision_suggestions", [])
-                if self.status_callback:
-                    self.status_callback("editing", 55, "发现连贯性问题，正在返回场景设计修正...")  # 提示回退
-            
+            state["current_step"] = "editing_complete"
             return state
         except Exception as e:
             state["error_message"] = f"编辑检查失败: {str(e)}"
@@ -243,6 +221,7 @@ class NovelProcessingFlow:
                             break
                     
                     if matching_assets:
+                        print(f"finalize_node {chapter_index} {scene_index}: {matching_assets}")
                         scene = Scene(
                             id=str(uuid.uuid4()),
                             chapterIndex=chapter_index,

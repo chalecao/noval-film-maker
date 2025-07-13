@@ -8,8 +8,8 @@ class ScriptAgent:
     
     def __init__(self, ollama_client):
         self.ollama_client = ollama_client
-        # self.model_name = "gemma3n:e4b" 
-        self.model_name = "qwen3:4b"
+        self.model_name = "gemma3n:e4b" 
+        # self.model_name = "qwen3:4b"
     
     async def create_script(self, chapter_content: str, chapter_index: int) -> Dict[str, Any]:
         """为单个章节创建剧本"""

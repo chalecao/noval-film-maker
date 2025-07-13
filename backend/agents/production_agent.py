@@ -16,8 +16,8 @@ class ProductionAgent:
     
     def __init__(self, ollama_client):
         self.ollama_client = ollama_client
-        # self.model_name = "gemma3n:e4b"
-        self.model_name = "qwen3:4b"
+        self.model_name = "gemma3n:e4b"
+        # self.model_name = "qwen3:4b"
         self.assets_dir = Path("assets")
         self.assets_dir.mkdir(exist_ok=True)
         
@@ -46,7 +46,7 @@ class ProductionAgent:
             "image_url": image_url,
             "audio_url": audio_info["url"],       # 音频路径
             "audio_duration": audio_info["duration"],  # 新增：音频时长（秒）
-            "audio_script": scene_design.get("dialogue_text", ""), 
+            "audio_script": scene_design.get("visual_description", ""), 
             "animation_code": animation_code,
             "assets_generated": True
         }
@@ -103,7 +103,8 @@ class ProductionAgent:
     async def _generate_scene_audio(self, scene_design: Dict[str, Any]) -> str:
         """生成场景语音（返回包含URL和时长的字典）"""
         try:
-            dialogue_text = scene_design.get("dialogue_text", "")
+            # dialogue_text = scene_design.get("dialogue_text", "")
+            dialogue_text = scene_design.get("visual_description", "")
             
             if not dialogue_text:
                 return {"url": "", "duration": 0}

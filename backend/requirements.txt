@@ -7,3 +7,8 @@ pydantic==2.5.0
 langgraph==0.0.66
 typing-extensions==4.8.0
 pathlib==1.0.1
+python-ffmpeg
+pydub
+pyttsx3
+diffusers
+torch

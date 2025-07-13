@@ -25,6 +25,7 @@ class Scene(BaseModel):
     description: str
     imageUrl: str
     audioUrl: str
+    audioScript: str
     animationCode: str
     duration: float
 

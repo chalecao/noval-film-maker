@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && cd dist && zip -r noval.zip ./",
     "lint": "eslint .",
     "preview": "vite preview",
     "cp": "cp -R backend/assets public",

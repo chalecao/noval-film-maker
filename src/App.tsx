@@ -8,7 +8,7 @@ import './index.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/tool/noval/">
       <div className="min-h-screen bg-gray-900">
         <Routes>
           <Route path="/" element={<LandingPage />} />

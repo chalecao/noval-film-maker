@@ -25,6 +25,7 @@ import {
   Scissors,
   Play
 } from 'lucide-react';
+import { labels } from '../i18n/config';
 
 interface ProcessingStatus {
   stage: string;
@@ -168,6 +169,7 @@ const TryPage: React.FC = () => {
       const mergedBooks = [...JSON.parse(books), ...filteredBooks];
       // 保存到localStorage
       localStorage.setItem('books', JSON.stringify(mergedBooks));
+      console.log('mergedBooks', mergedBooks);
       setBooks(mergedBooks);
     } catch (error) {
       console.error('获取书籍列表失败:', error);
@@ -260,7 +262,7 @@ const TryPage: React.FC = () => {
             className="flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
           >
             <ArrowLeft className="h-4 w-4" />
-            <span>返回首页</span>
+            <span>{labels.agent.returnHome}</span>
           </button>
 
           <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -328,8 +330,8 @@ const TryPage: React.FC = () => {
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-8">
                   <div className="text-center mb-8">
                     <FileText className="mx-auto h-16 w-16 text-blue-400 mb-4" />
-                    <h2 className="text-3xl font-bold mb-4">上传您的小说</h2>
-                    <p className="text-gray-300">支持txt格式，AI将为您创造视觉奇迹</p>
+                    <h2 className="text-3xl font-bold mb-4">{labels.agent.upload}</h2>
+                    <p className="text-gray-300">{labels.agent.uploadDesc1}</p>
                   </div>
 
                   <div
@@ -339,8 +341,8 @@ const TryPage: React.FC = () => {
                     onClick={() => fileInputRef.current?.click()}
                   >
                     <Upload className="mx-auto h-12 w-12 text-blue-400 mb-4" />
-                    <p className="text-lg mb-2">点击选择或拖拽文件到此处</p>
-                    <p className="text-sm text-gray-400">支持 .txt 格式，建议文件大小不超过1MB</p>
+                    <p className="text-lg mb-2">{labels.agent.uploadDesc2}</p>
+                    <p className="text-sm text-gray-400">{labels.agent.uploadDesc1}</p>
 
                     <input
                       ref={fileInputRef}

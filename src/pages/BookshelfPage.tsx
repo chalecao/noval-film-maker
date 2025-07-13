@@ -20,7 +20,7 @@ const BookshelfPage: React.FC = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await fetch('/assets/books/all.json');
+                const response = await fetch('./assets/books/all.json');
                 const data = await response.json();
                 setBooks(data);
                 setLoading(false);

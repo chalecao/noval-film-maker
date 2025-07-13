@@ -7,8 +7,8 @@ class EditorAgent:
     
     def __init__(self, ollama_client):
         self.ollama_client = ollama_client
-        # self.model_name = "gemma3n:e4b"
-         self.model_name = "qwen3:4b"
+        self.model_name = "gemma3n:e4b"
+        # self.model_name = "qwen3:4b"
     
     async def check_continuity(self, scripts: List[Dict], scene_designs: List[Dict], generated_assets: List[Dict]) -> List[Dict]:
         """检查连贯性和完整性"""

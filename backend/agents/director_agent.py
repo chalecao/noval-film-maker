@@ -8,8 +8,8 @@ class DirectorAgent:
     
     def __init__(self, ollama_client):
         self.ollama_client = ollama_client
-        # self.model_name = "gemma3n:e4b"
-        self.model_name = "qwen3:4b"
+        self.model_name = "gemma3n:e4b"
+        # self.model_name = "qwen3:4b"
     
     async def design_scenes(self, script: Dict[str, Any], revision_suggestions: List[Dict] = []) -> List[Dict[str, Any]]:
         """为剧本设计场景（支持修正建议）"""
@@ -34,10 +34,10 @@ class DirectorAgent:
         # Add revision suggestions to prompt if available
         revision_prompt = ""
         if revision_suggestions:
-            revision_prompt = f"\n修正建议：{json.dumps(revision_suggestions, ensure_ascii=False)}"
+            revision_prompt = f"\n修正建议：{json.dumps(revision_suggestions, ensure_ascii=False)}（请优先遵循修正建议）"
         
         prompt = f"""
-作为一个专业的导演，请为以下场景设计详细的视觉效果、动画和呈现方式。{revision_prompt} （如果有修正建议，请优先遵循）
+作为一个专业的导演，请为以下场景设计详细的视觉效果、动画和呈现方式。{revision_prompt} 
 
 章节标题：{chapter_title}
 场景信息：
@@ -52,7 +52,7 @@ class DirectorAgent:
     "scene_id": "{scene.get('id', '')}",
     "visual_description": "详细的视觉场景描述，包括环境、光线、色彩、构图等",
     "image_prompt": "用于生成场景图片的AI提示词（英文）",
-    "dialogue_text": "精炼的对话或旁白文本",
+    "dialogue_text": "精炼的对话或旁白文本, 和输入的语言保持一致",
     "animation_effects": "动画效果描述",
     "css_animation": "CSS动画代码",
     "camera_angle": "镜头角度",
@@ -67,6 +67,7 @@ class DirectorAgent:
 3. CSS动画代码要可执行
 4. 镜头角度要有电影感
 5. 色彩搭配要符合情绪
+6. dialogue_text 要和输入的语言保持一致，输入是中文，这个输出也是中文
 
 请只返回JSON格式，不要包含其他文字。
 """
@@ -80,6 +81,7 @@ class DirectorAgent:
         # 解析响应
         design_text = response.get("response", "").strip()
         
+        print(f"design_text: {design_text}")
         try:
             design_data = json.loads(design_text)
         except json.JSONDecodeError:
